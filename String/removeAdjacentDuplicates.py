@@ -10,3 +10,5 @@ class Solution:
                 stack.append(letter)
 
         return "".join(stack)
+    
+print("problem")
