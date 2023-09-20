@@ -1,11 +1,11 @@
-
-class SumDigitsStringAfterConvert {
+class SumDigitsstringAfterConvert {
     public int getLucky(String s, int k) {
 
         String alpha = "abcdefghijklmnopqrstuvwxyz";
         for (int j=0; j<s.length(); j++) {
             char c = Character.toLowerCase(s.charAt(j));
-            s = s.substring(0, j)+ Integer.toString(alpha.indexOf(c+1))+ s.substring(j+1, s.length());
+            System.out.println("char: " +  c  + ", index: " + Integer.toString(alpha.indexOf(c)+1) + " j:"+j);
+            s = s.substring(0, j)+ Integer.toString(alpha.indexOf(c)+1)+ s.substring(j+1, s.length());
         }
 
         for (int i=0; i<k; i++) {
@@ -21,3 +21,4 @@ class SumDigitsStringAfterConvert {
     }
 }
 // 1945. Sum of Digits of String After Convert
+// Bug: c returning number even through character is exists in alpha-string
