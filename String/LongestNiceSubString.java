@@ -35,3 +35,4 @@ class LongestNiceSubString {
         return true;
     }
 }
+// 1763. Longest Nice Substring
