@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 
 // 1st SOLUTION
 class FirstLetterToAppearTwice {
