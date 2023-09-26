@@ -1,5 +1,5 @@
 class Solution:
-    def oddString(self, words: List[str]) -> str:
+    def oddString(self, words) -> str:
         alpha = "abcdefghijklmnopqrstuvwxyz"
         difference = [] # each element stores the difference array for that index word
         for i, word in enumerate(words): # iterate through each word
