@@ -10,8 +10,6 @@ class LengthOfLastWord {
     }
 }
 
-// 58. Length of Last Word
-
 
 // PYTHON SOLUTION
 // class Solution:
@@ -29,3 +27,6 @@ class LengthOfLastWord {
 //             last_word_length += 1
 
 //         return last_word_length
+
+
+// 58. Length of Last Word
