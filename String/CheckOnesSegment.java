@@ -37,5 +37,39 @@ class CheckOnesSegment {
     }
 }
 
+
+
 // 1784. Check if Binary String Has at Most One Segment of Ones
 // Patterns: String Iteration, Counting Elements
+
+// FAILED SOLUTION
+// class Solution {
+//     public boolean checkOnesSegment(String s) {
+
+//         int oneSegments = 0;
+
+//         int i =0;
+//         while (i<s.length()-1) {
+//             if (s.charAt(i) == '1') {
+//                 int count = 1;
+//                 int j = i+1;
+//                 while (j <s.length()-1 && s.charAt(j) == '1') {
+//                     count += 1;
+//                     j += 1;
+//                 }
+//                 if (count > 1) {
+//                     oneSegments += 1;
+//                     i += count-1;
+//                 }
+//             }
+//             i += 1;
+//         }
+        
+//         System.out.println(oneSegments);
+//         if (oneSegments > 1 || oneSegments == 0) {
+//             return false;
+//         }
+//         return true;
+        
+//     }
+// }
