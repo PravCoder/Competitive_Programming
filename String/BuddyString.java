@@ -22,5 +22,5 @@ class BuddyString {
     }
 }
 
-// // 859. Buddy Strings
+// 859. Buddy Strings
 // Patterns: Substring Indicies, Character Removing/Swapping, String Iteration. 
