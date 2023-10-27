@@ -57,6 +57,7 @@ class MaxIncreaseToKeepCitySkyLine {
 // Note: each element inteer in 2d-arr is the height of the building. We can set hte height of any building to
 // whatever we want. We want to increase the height of each building as much as we can without changing the
 // city's skyline, we max we change the height of building in hte min of the max height in its row and max height 
-// in its col. 
+// in its col. To improve this solution instead of calling get max of each element, do it once and store it. 
 
 // Patterns: 2D-Array, Iterate Rows/Cols, 
+
