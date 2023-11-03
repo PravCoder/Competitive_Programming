@@ -1,4 +1,3 @@
-
 class MinAmountOfTimeToCollectGarbage {
     public int garbageCollection(String[] garbage, int[] travel) {
 
@@ -61,6 +60,13 @@ class MinAmountOfTimeToCollectGarbage {
 // (2 + 4) + 2 = 8, for paper
 // travel_time + garbage_picked
 // have to start from house 0
+
+// 2391. Minimum Amount of Time to Collect Garbage
+
+
+
+
+
 
 
 
