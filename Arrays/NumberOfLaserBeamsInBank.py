@@ -1,5 +1,5 @@
 class Solution:
-    def numberOfBeams(self, bank: List[str]) -> int:
+    def numberOfBeams(self, bank):
         # remove all of the rows that dont have devices
         new_bank = []
         for row in bank:
