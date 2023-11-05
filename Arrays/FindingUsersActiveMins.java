@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+
+// TIME LIMIT EXCEEDED SOLUTION
 class FindingUsersActiveMins {
     public int[] findingUsersActiveMinutes(int[][] logs, int k) {
 
@@ -42,5 +44,41 @@ class FindingUsersActiveMins {
     }
 }
 
+// PASSED SOLUTION
+class FindingUsersActiveMins1 {
+    public int[] findingUsersActiveMinutes(int[][] logs, int k) {
+
+        int[] output = new int[k]; 
+        // { user-id: set(t,i,m,e) }
+        HashMap<Integer,HashSet<Integer>> map =new HashMap<>();
+        // iterate each log
+        for (int[] log: logs) {
+            int userID = log[0];  // get cur user and time
+            int time = log[1];
+            // if we havent seen this user, add them into hash with empty hashset
+            if (map.containsKey(userID) == false) {
+                map.put(userID, new HashSet<>());
+            }
+            // get the cur-user and add cur-time to their hashset, this runs
+            // even when we have seen user with this ID
+            map.get(userID).add(time);
+        }
+        // itertate user-id-key of hashmap
+        for (int userID: map.keySet()) {
+            // the unqiue mins is the size of their value-hashset
+            int UAM = map.get(userID).size();
+            // UAM-1 is the index in output, since j=UAM, j-1 is the index
+            output[UAM-1] += 1;
+
+        }
+        return output;
+
+        
+    }
+
+}
+
 // NOTE: answer[j] is the number of users whose UAM equals j-index.
+// hashset prevent duplicates
 // 1817. Finding the Users Active Minutes
+// Patterns: Hashmap
