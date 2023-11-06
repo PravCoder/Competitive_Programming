@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 class FindPrefixCommonArrayOfTwoArrays {
     public int[] findThePrefixCommonArray(int[] A, int[] B) {
