@@ -1,5 +1,5 @@
 class Solution:
-    def restoreArray(self, adjacentPairs: List[List[int]]) -> List[int]:
+    def restoreArray(self, adjacentPairs):
 
         def dfs(u):
             output.append(u) # add cur-node to visited and otuput
@@ -27,3 +27,4 @@ class Solution:
 
 # adjacentPairs = [[2,1],[3,4],[3,2]]
 # {1:[2], 2:[1,3]}
+# 1743. Restore the Array From Adjacent Pairs
