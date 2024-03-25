@@ -12,3 +12,5 @@ class Solution:
                         output.append(triplet)
 
         return output
+    
+# TIME LIMIT EXCEEDED
