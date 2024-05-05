@@ -3,6 +3,8 @@ from itertools import product
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         output = []
+        if len(digits) == 0:
+            return output
 
         # each digit-number maps to some letters
         digitMap = {"2": "abc","3":"def","4":"ghi", "5":"jkl","6":"mno","7":"qprs","8":"tuv","9":"wxyz"}
@@ -17,6 +19,11 @@ class Solution:
             # for every letter that the cur-digit-i maps to and increment i+1 because we are adding a letter, add that letter to the curStr we are building
             for letter in digitMap[digits[i]]:
                 backtrack(i+1, curStr + letter)
+
+        # if digits is not empty then call backtrack starting with with first digit in digit-str
+        # and we are bulding a combination from scratch so start with empty string. 
+        if digits != "":
+            backtrack(0, "")
     
         return output
             
