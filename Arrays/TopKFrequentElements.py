@@ -26,4 +26,35 @@ class Solution:
         
         return top_k
 
+
+# TIME LIMIT EXCEEDED
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+
+        count = {}  # {occurances: [v,a,l,u,e,s, in nums that occur that many times]}, key is occurances either 0 to length of list, value is the elements in nums that occur that many times
+
+        for i in range(0, len(nums)+1):  # init with empty list
+            count[i] = []
+
+        for n in nums: # count up
+            n_freq = nums.count(n)
+            if n not in count[n_freq]:
+                count[n_freq].append(n)
+        
+        l = 0   # stores number of elements we have added to top_k
+        top_k = [] 
+        for j in range(len(nums), -1, -1):  # iterate from last-occurance value to 0
+            if len(count[j]) > 0 and l < k:    # if there are elements at occur that many times and we havent reached kth limit 
+                for value in count[j]:         # add each value that occurs that many times tom top-k and increment l
+                    l += 1
+                    top_k.append(value)
+            if l == k:
+                return top_k
+
+        print(count)
+        return top_k
+
+        
+# NOTE: Bucket Sort (modified)
+
     
