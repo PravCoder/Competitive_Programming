@@ -45,3 +45,33 @@ class Solution:
 # non-diagonal: (0,1) (0,2) (2,3) (3,3)
 
 # 2319. Check if Matrix Is X-Matrix
+
+
+# OPTIMIZED
+class Solution1:
+    def checkXMatrix(self, grid: List[List[int]]) -> bool:
+        n = len(grid) # grid is square
+        # for primary diagonal iterate through all row-indicies,col-indicies and if they are equal then that element is on primary diagonal
+        for i in range(n):
+            if grid[i][i] == 0:
+                return False
+
+        for i in range(0, n): 
+            if grid[i][n-1-i] == 0:
+                return False
+        
+
+        # for other elements it is not an other element is indicies are equal or their sum is equal to last indx
+        for i in range(n):
+            for j in range(n):
+                if i == j or i + j == n - 1:
+                    continue
+                else:
+                    if grid[i][j] != 0:
+                        return False
+  
+        return True
+
+# primary: (0,0) (1,1) (2,2) .... row-indx col-indx is same for primary diagonal
+# secondary: (0,3) (1,2) (2,1) (3,0), row-indx increasing to max, col-indx decreasing to 0
+# non-diagonal: (0,1) (0,2) (2,3) (3,3)
