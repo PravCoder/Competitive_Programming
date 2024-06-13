@@ -1,0 +1,22 @@
+from typing import List
+
+class Solution:
+    def getLongestSubsequence(self, words: List[str], groups: List[int]) -> List[str]:
+
+        if len(words) == 1:
+            return [words[0]]
+
+        longest_sub = []
+        for i in range(len(words)):
+            sub = [words[i]]  # initialize sub with the current word
+            last_group = groups[i]  # keep track of the last group
+
+            for j in range(i + 1, len(words)):
+                if groups[j] != last_group:  # if the group is different, add the word to sub
+                    sub.append(words[j])
+                    last_group = groups[j]  # update the last_group to the current group
+
+            if len(sub) > len(longest_sub):  # update longest_sub if the current sub is longer
+                longest_sub = sub
+
+        return longest_sub
