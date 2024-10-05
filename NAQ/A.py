@@ -1,4 +1,5 @@
 """
+KATTIS
 
 Problem:
 -Each card has value
@@ -20,7 +21,6 @@ Output:
 for each n output lines output max score you can get for a subseq
 of length at most 1,2,3,...,n.
 
-TBD: rework in python
 """
 
 

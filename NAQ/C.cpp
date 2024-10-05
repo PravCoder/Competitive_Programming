@@ -7,7 +7,10 @@
 using namespace std;
 
 /* 
+KATTIS
 n=number of candidate problems
+
+just a even/odd problem
 */
 
 

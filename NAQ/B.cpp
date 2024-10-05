@@ -8,7 +8,52 @@
 using namespace std;
 
 /* 
+KATTIS
 
+
+Problem B
+Bikes and Barricades
+Scott wants to ride his bike along a straight road. But the road has some barricades! Scott will ride his bike up to the first barricade and stop.
+
+Model Scott’s straight road as the positive 
+ axis, with Scott starting at the origin. The barricades are line segments, specified by their endpoints. Determine how far Scott can ride, or if his path is completely unobstructed.
+
+Input
+The first line of input contains a single integer 
+ (
+), which is the number of barricades.
+
+Each of the next 
+ lines contains four integers 
+, 
+, 
+ and 
+ (
+, 
+, 
+), representing a barricade that runs from 
+ to 
+. It is guaranteed that no barricade will run through the origin.
+
+Output
+Output a single real number, which is how far Scott can ride before he hits the closest barricade, or 
+ if no barricades get in Scott’s way. This output will be considered correct if it is within an absolute or relative error of 
+.
+
+Sample Input 1	
+2
+-10 7 5 19
+-1 -1 8 21
+
+Sample Output 1: 1.4444444444444446
+
+Sample Input 2	Sample Output 2
+2
+4 -6 -12 -1
+3 5 8 8
+
+Sample Output 2-1.0
+------------------------------------
 Problem:
 -scott is riding up the y-axis
 -starts at origin
