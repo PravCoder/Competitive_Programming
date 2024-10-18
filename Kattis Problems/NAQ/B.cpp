@@ -72,7 +72,7 @@ order of baricades shouldnt matter in solution
     
 */
 
-double does_baricade_hit_y_axis(int x1, int y1, int x2, int y2) { // finding y-intercept of those 2 endpoints
+double does_baricade_hit_y_axis(int x1, int y1, int x2, int y2) { // finding y-intercept of those 2 endpointsp÷
     // if it even intersects y-axis
     if ((x1 < 0 && x2 > 0) || (x1 > 0 && x2 < 0)) { 
         double slope = static_cast<double>(y2 - y1) / (x2 - x1);
