@@ -24,12 +24,12 @@ h,k = center
 a = in ellipse equation is semi-major axis
 b = in ellipse equation semi-minor axis. 
 
-Top-right coordiantes:
+Find Top-right coordiantes:
 intersection of following lines:
 - tangent line of maximum-y-val point on ellipse
 - tangent line of maximum-x-val point on ellipse
 
-Lower-Left coordiantes:
+Find Lower-Left coordiantes:
 intersection of following lines:
 - tangent line of minimum-y-val point on ellipse
 - tangent line of minimum-x-val point on ellipse
@@ -109,6 +109,64 @@ vector<double> compute_intersection_point_of_lines(vector<double> line1, vector<
 
 }
 
+vector<double> find_optimal_points(double h, double k, double a, double b) {
+    vector<double> points; 
+    // Maximum y-value point
+    double x_max_y_value = 0;
+    double y_max_y_value = 0;
+    // Maximum x-value point
+    double x_max_x_value = 0;
+    double y_max_x_value = 0;
+
+    // Minimum y-value point
+    double x_min_y_value = 0; 
+    double y_min_y_value = 0;
+    // Minimum x-value point
+    double x_min_x_value = 0;
+    double y_min_x_value = 0;
+
+    const double pi = 3.14159265358979323846;
+    const double step = 0.01; // step size for theta
+    for (double theta = 0; theta < 2 * pi; theta += step) {
+        double x = h + a * cos(theta);
+        double y = k + b * sin(theta);
+
+        // Find max/min of y-value point
+        if (y > y_max_y_value) {
+            y_max_y_value = y;
+            x_max_y_value = x;
+        }
+        if (y < y_min_y_value) {
+            y_min_y_value = y;
+            x_min_y_value = x;
+        }
+
+        if (x > x_max_x_value) {
+            x_max_x_value = x;
+            y_max_x_value = y;
+        }
+        if (x < x_min_x_value) {
+            x_min_x_value = x;
+            y_min_x_value = y;
+        }
+        // cout << "Point on ellipse: (" << x << ", " << y << ")" << endl;
+    }
+    points.push_back(x_max_y_value);
+    points.push_back(y_max_y_value);
+
+    points.push_back(x_max_x_value);
+    points.push_back(y_max_x_value);
+
+    points.push_back(x_min_y_value);
+    points.push_back(y_min_y_value);
+
+    points.push_back(x_min_x_value);
+    points.push_back(y_min_x_value);
+    // [Max-y-value-point, Max-x-value-point, Min-y-value-point, Min-x-value-point]
+    return points;
+
+}
+
 int main() {
     // Input: -5 0 5 0 16
     // Ellipse: \frac{\left(x-\left(0\right)\right)^{2}}{\left(8\right)^{2}}+\frac{\left(y-\left(0\right)\right)^{2}}{\left(6.245\right)^{2}}=1
@@ -122,23 +180,24 @@ int main() {
     double semi_major_axis = a/2; // semi-major = major-axis divided by 2
     double semi_minor_axis= find_semi_minor(x1, y1, h, k, semi_major_axis);
 
-    // TBD: find optim points
+    cout << "Center: " << h << "," << k << endl;
+    cout << "Semi-major: " << semi_major_axis << endl;
+    cout << "Semi-minor: " << semi_minor_axis << endl;
 
-    // ***FIND TOP-RIGHT INTERSECTION POINT***
-    
-    // // Maximum y-value point
-    // double x_max_y_value = 0;
-    // double y_max_y_value = 6.245;
-    // // Maximum x-value point
-    // double x_max_x_value = 8;
-    // double y_max_x_value = 0;
+    // TODO: FIND the max/min x/y value points
+    vector<double> points = find_optimal_points(h, k, semi_major_axis, semi_minor_axis);
 
     // Maximum y-value point
-    double x_max_y_value = 35;
-    double y_max_y_value = 67.0227;
+    double x_max_y_value = points[0];
+    double y_max_y_value = points[1];
     // Maximum x-value point
-    double x_max_x_value = 70;
-    double y_max_x_value = 45;
+    double x_max_x_value = points[2];
+    double y_max_x_value = points[3];
+
+
+
+    // ***FIND TOP-RIGHT INTERSECTION POINT***
+
 
     // Maximum y-value point
     double m1 = compute_tangent_line_slope(x_max_y_value, y_max_y_value, h, k, semi_major_axis, semi_minor_axis);
@@ -171,31 +230,36 @@ int main() {
     }
     vector<double> top_right_intersection_point = compute_intersection_point_of_lines(max_y_value_line, max_x_value_line);
 
-    cout << "Center: " << h << "," << k << endl;
-    cout << "Semi-major: " << semi_major_axis << endl;
-    cout << "Semi-minor: " << semi_minor_axis << endl;
+    // PRINT INFO
+    cout << "\nTop-Right" << endl;
+    if (max_y_value_line.size() == 3) {
+        cout << "Max-y-value-point tangent line: x = " << "" << max_y_value_line[1] << endl;
+    } 
+    else if (max_y_value_line.size() == 2) {
+        cout << "Max-y-value-point tangent line: y = " << max_y_value_line[0] << "x + " << max_y_value_line[1] << endl;
+    }
 
-    cout << "TOP-RIGHT" << endl;
-    cout << "Max-y-value-point tangent line: y = " << m1 << "x + " << b1 << endl;  // it might be 
-    cout << "Max-x-value-point tangent line: y = " << m2 << "x + " << b2 << endl;
-    cout << "Intersection: " << top_right_intersection_point[0] << ", " << top_right_intersection_point[1] << endl;
+    if (max_x_value_line.size() == 3) {
+        cout << "Max-x-value-point tangent line: x = " << "" << max_x_value_line[1] << endl;
+    } 
+    else if (max_x_value_line.size() == 2) {
+        cout << "Max-x-value-point tangent line: y = " << max_x_value_line[0] << "x + " << max_x_value_line[1] << endl;
+    }
+
+    // cout << "Intersection: " << top_right_intersection_point[0] << ", " << top_right_intersection_point[1] << endl;
+
+
 
 
     // ***FIND BOTTOM-LEFT INTERSECTION***
 
-    // Minimum y-value point
-    // double x_min_y_value = 0;
-    // double y_min_y_value = -6.245;
-    // Minimum x-value point
-    // double x_min_x_value = -8;
-    // double y_min_x_value = 0;
 
     // Minimum y-value point
-    double x_min_y_value = 35; 
-    double y_min_y_value = 22.9773;
+    double x_min_y_value = points[4]; 
+    double y_min_y_value = points[5];
     // Minimum x-value point
-    double x_min_x_value = 0;
-    double y_min_x_value = 45;
+    double x_min_x_value = points[6];
+    double y_min_x_value = points[7];
 
     // Minimum y-value point
     m1 = compute_tangent_line_slope(x_min_y_value, y_min_y_value, h, k, semi_major_axis, semi_minor_axis);
@@ -229,11 +293,24 @@ int main() {
     vector<double> bottom_left_intersection_point = compute_intersection_point_of_lines(min_y_value_line, min_x_value_line);
 
 
-    cout << "BOTTOM-LEFT" << endl;
-    cout << "Min-y-value-point tangent line: y = " << m1 << "x + " << b1 << endl;
-    cout << "Min-x-value-point tangent line: y = " << m2 << "x + " << b2 << endl;
-    cout << "Intersection: " << bottom_left_intersection_point[0] << ", " << bottom_left_intersection_point[1] << endl;
-    
+    // Print INFO
+    cout << "\nBOTTOM-LEFT" << endl;
+    if (min_y_value_line.size() == 3) {
+        cout << "Min-y-value-point tangent line: x = " << "" << min_y_value_line[1] << endl;
+    } 
+    else if (min_y_value_line.size() == 2) {
+        cout << "Min-y-value-point tangent line: y = " << min_y_value_line[0] << "x + " << min_y_value_line[1] << endl;
+    }
 
+    if (min_x_value_line.size() == 3) {
+        cout << "Min-x-value-point tangent line: x = " << "" << min_x_value_line[1] << endl;
+    } 
+    else if (min_x_value_line.size() == 2) {
+        cout << "Min-x-value-point tangent line: y = " << min_x_value_line[0] << "x + " << min_x_value_line[1] << endl;
+    }
+    
+    // cout << "Intersection: " << bottom_left_intersection_point[0] << ", " << bottom_left_intersection_point[1] << endl;
+    
+    cout << bottom_left_intersection_point[0] <<  bottom_left_intersection_point[1] << top_right_intersection_point[0] << top_right_intersection_point[1];
 
 }
