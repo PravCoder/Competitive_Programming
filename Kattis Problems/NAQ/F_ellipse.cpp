@@ -180,9 +180,9 @@ int main() {
     double semi_major_axis = a/2; // semi-major = major-axis divided by 2
     double semi_minor_axis= find_semi_minor(x1, y1, h, k, semi_major_axis);
 
-    cout << "Center: " << h << "," << k << endl;
-    cout << "Semi-major: " << semi_major_axis << endl;
-    cout << "Semi-minor: " << semi_minor_axis << endl;
+    // cout << "Center: " << h << "," << k << endl;
+    // cout << "Semi-major: " << semi_major_axis << endl;
+    // cout << "Semi-minor: " << semi_minor_axis << endl;
 
     // TODO: FIND the max/min x/y value points
     vector<double> points = find_optimal_points(h, k, semi_major_axis, semi_minor_axis);
@@ -231,20 +231,20 @@ int main() {
     vector<double> top_right_intersection_point = compute_intersection_point_of_lines(max_y_value_line, max_x_value_line);
 
     // PRINT INFO
-    cout << "\nTop-Right" << endl;
-    if (max_y_value_line.size() == 3) {
-        cout << "Max-y-value-point tangent line: x = " << "" << max_y_value_line[1] << endl;
-    } 
-    else if (max_y_value_line.size() == 2) {
-        cout << "Max-y-value-point tangent line: y = " << max_y_value_line[0] << "x + " << max_y_value_line[1] << endl;
-    }
+    // cout << "\nTop-Right" << endl;
+    // if (max_y_value_line.size() == 3) {
+    //     cout << "Max-y-value-point tangent line: x = " << "" << max_y_value_line[1] << endl;
+    // } 
+    // else if (max_y_value_line.size() == 2) {
+    //     cout << "Max-y-value-point tangent line: y = " << max_y_value_line[0] << "x + " << max_y_value_line[1] << endl;
+    // }
 
-    if (max_x_value_line.size() == 3) {
-        cout << "Max-x-value-point tangent line: x = " << "" << max_x_value_line[1] << endl;
-    } 
-    else if (max_x_value_line.size() == 2) {
-        cout << "Max-x-value-point tangent line: y = " << max_x_value_line[0] << "x + " << max_x_value_line[1] << endl;
-    }
+    // if (max_x_value_line.size() == 3) {
+    //     cout << "Max-x-value-point tangent line: x = " << "" << max_x_value_line[1] << endl;
+    // } 
+    // else if (max_x_value_line.size() == 2) {
+    //     cout << "Max-x-value-point tangent line: y = " << max_x_value_line[0] << "x + " << max_x_value_line[1] << endl;
+    // }
 
     // cout << "Intersection: " << top_right_intersection_point[0] << ", " << top_right_intersection_point[1] << endl;
 
@@ -294,23 +294,23 @@ int main() {
 
 
     // Print INFO
-    cout << "\nBOTTOM-LEFT" << endl;
-    if (min_y_value_line.size() == 3) {
-        cout << "Min-y-value-point tangent line: x = " << "" << min_y_value_line[1] << endl;
-    } 
-    else if (min_y_value_line.size() == 2) {
-        cout << "Min-y-value-point tangent line: y = " << min_y_value_line[0] << "x + " << min_y_value_line[1] << endl;
-    }
+    // cout << "\nBOTTOM-LEFT" << endl;
+    // if (min_y_value_line.size() == 3) {
+    //     cout << "Min-y-value-point tangent line: x = " << "" << min_y_value_line[1] << endl;
+    // } 
+    // else if (min_y_value_line.size() == 2) {
+    //     cout << "Min-y-value-point tangent line: y = " << min_y_value_line[0] << "x + " << min_y_value_line[1] << endl;
+    // }
 
-    if (min_x_value_line.size() == 3) {
-        cout << "Min-x-value-point tangent line: x = " << "" << min_x_value_line[1] << endl;
-    } 
-    else if (min_x_value_line.size() == 2) {
-        cout << "Min-x-value-point tangent line: y = " << min_x_value_line[0] << "x + " << min_x_value_line[1] << endl;
-    }
+    // if (min_x_value_line.size() == 3) {
+    //     cout << "Min-x-value-point tangent line: x = " << "" << min_x_value_line[1] << endl;
+    // } 
+    // else if (min_x_value_line.size() == 2) {
+    //     cout << "Min-x-value-point tangent line: y = " << min_x_value_line[0] << "x + " << min_x_value_line[1] << endl;
+    // }
     
     // cout << "Intersection: " << bottom_left_intersection_point[0] << ", " << bottom_left_intersection_point[1] << endl;
     
-    cout << bottom_left_intersection_point[0] <<  bottom_left_intersection_point[1] << top_right_intersection_point[0] << top_right_intersection_point[1];
+    cout << bottom_left_intersection_point[0] <<  " " << bottom_left_intersection_point[1] << " " << top_right_intersection_point[0] << " " << top_right_intersection_point[1];
 
 }

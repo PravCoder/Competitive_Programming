@@ -1,0 +1,71 @@
+ORG 10 
+NUM0, CLA 
+ 	SKI 
+ 	BUN NUM0 
+	INP 
+ 	STA I0 
+	BUN NUM1 
+NUM1, CLA 
+ 	SKI // Skips if there is input
+ 	BUN NUM1 
+ 	INP 
+ 	STA I1 
+	BUN CONVERTFROMHEXTODECIMAL0 
+
+CONVERTFROMHEXTODECIMAL0, CLA
+	LDA I0
+	ADD ASCIICONV // Use ASCIICONV to convert the hexadecimal
+	ADD LTRSEPERATE // Use LTRSEPERATE to convert hexadecimal further
+	SNA
+	ADD LTRCONVERT // Use LTRCONVERT to revert digit back to hexadecimal
+	ADD LTRBACK // Use LTRBACK to convert digit back to hexadecimal
+	STA HEX0 // Store 1st digit after conversions
+	ADD HEX0 // Add HEX0 16 times to account for multiplication
+	ADD HEX0 // 3
+	ADD HEX0 // 4
+	ADD HEX0 // 5
+	ADD HEX0 // 6
+	ADD HEX0 // 7
+	ADD HEX0 // 8
+	ADD HEX0 // 9
+	ADD HEX0 // 10
+	ADD HEX0 // 11
+	ADD HEX0 // 12
+	ADD HEX0 // 13
+	ADD HEX0 // 14
+	ADD HEX0 // 15
+	ADD HEX0 // 16
+	STA HEX0 // Store HEX0 after multiplying 
+	BUN CONVERTFROMHEXTODECIMAL1 // Move to 1st hex conversion
+CONVERTFROMHEXTODECIMAL1, CLA // Clear the accumulator (AC)
+	LDA I1 // Load first digit
+	ADD ASCIICONV 
+	ADD LTRSEPERATE
+	SNA // Skip the digit if it is negative
+	ADD LTRCONVERT // Add this value back if we want the number
+	ADD LTRBACK // Add this value back if we want a letter
+	STA HEX1 // Store HEX1
+	OUT
+
+PRINTOUT, CLA 
+	LDA HEX0 
+	OUT
+	CLA
+	LDA HEX1
+	OUT
+	CLA
+	HLT
+
+
+I0, DEC 0 
+I1, DEC 0
+
+HEX0,DEC 0 // Store HEX0 as a Decimal Value
+HEX1,DEC 0 // Store HEX1 as a Decimal Value
+HEX2,DEC 0 // Store HEX2 as a Decimal Value
+HEX3,DEC 0 // Store HEX3 as a Decimal Value
+
+ASCIICONV,HEX -30 // Subtract -30 from the hex value from the ASCII
+LTRSEPERATE,HEX -10 // Subtract -10 from hex value of the ASCII to figure out if the digit is a
+LTRBACK,HEX 10 // Add 10 back to the hex value of the ASCII to change it from a Hex
+LTRCONVERT,HEX -7 // Subtract -7 from hex value of the ASCII to further convert it since it is a
