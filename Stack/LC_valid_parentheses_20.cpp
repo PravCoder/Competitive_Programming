@@ -92,7 +92,7 @@ public:
 
 // NOTE: in the input string when a bracket opens that same closing bracket has to close that open bracket some where (closing bracket doesn't have to be right after opening bracket)
 
-// Stack: is last in first out. 
+// Stack: is last in first out.  LIFO
 
 // stack.push("["): adds that element on top of the stack
 // stack.pop(): gets teh top element and removes it from the stack
