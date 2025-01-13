@@ -11,6 +11,8 @@ public:
                 // if j is more than i and j-indx is less than cur-min-indx, replace it
                 if (prices[j] <= prices[i] & j < min_indx) {
                     min_indx = j;
+                    // because we just want the minimum indux where element j > ele i
+                    break; 
                 }    
             }
             // if the min-indx is still the big-max value we didnt find discount
